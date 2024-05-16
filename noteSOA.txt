@@ -1,0 +1,34 @@
+http://localhost:3000/graphql
+
+
+ kaad kafka 
+njarrab tp
+ adapter les 2 microservices m3a producer
+mbaad n5adem les terminaux
+mbaad netaada lel consumer
+
+nabaath el code lkol + nkoulou kifch najam ntawar l'application
+
+mbaad nkolou aatini l'architectutre de ce projet 
+
+
+
+fi path :  C:\kafka
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+fi path C:\kafka\bin\windows :
+
+terminal 1 :
+kafka-topics.bat --create --bootstrap-server localhost:9092 --topic flights-topic (created déjà)
+
+hadha kifch ntesti : kafka-console-producer.bat --broker-list localhost:9092 --topic flights-topic
+>("id":"1","airline":"XYZ Airlines","origin":"New York","destination":"Los Angeles")
+
+dans un autre terminal :
+kafka-console-consumer.bat --topic flights-topic --bootstrap-server localhost:9092 --from-beginning
+
+yaatini kima hakk :
+("id":"1","airline":"XYZ Airlines","origin":"New York","destination":"Los Angeles")

@@ -1,0 +1,40 @@
+syntax = "proto3";
+package hotel_service;
+
+// Définition du message Hotel
+message Hotel {
+  string id = 1;
+  string name = 2;
+  string location = 3;
+  // Ajouter d'autres champs de données pour les hôtels au besoin
+}
+
+// Définition des messages de requête et de réponse pour les méthodes
+message GetHotelRequest {
+  string hotel_id = 1;
+}
+message GetHotelResponse {
+  Hotel hotel = 1;
+}
+message SearchHotelsRequest {
+  string query = 1;
+}
+message SearchHotelsResponse {
+  repeated Hotel hotels = 1;
+}
+
+message AddHotelRequest {
+  string name = 1;
+  string location = 2;
+}
+message AddHotelResponse {
+  Hotel hotel = 1;
+}
+
+// Définition du service de réservation d'hôtels
+service HotelService {
+  rpc GetHotel(GetHotelRequest) returns (GetHotelResponse);
+  rpc SearchHotels(SearchHotelsRequest) returns (SearchHotelsResponse);
+  rpc AddHotel(AddHotelRequest) returns (AddHotelResponse);
+  // Ajouter d'autres méthodes au besoin
+}

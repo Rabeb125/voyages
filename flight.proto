@@ -1,0 +1,42 @@
+syntax = "proto3";
+package flight_service;
+
+// Définition du message Flight
+message Flight {
+  string id = 1;
+  string airline = 2;
+  string origin = 3;
+  string destination = 4;
+  // Ajouter d'autres champs de données pour les vols au besoin
+}
+
+// Définition des messages de requête et de réponse pour les méthodes
+message GetFlightRequest {
+  string flight_id = 1;
+}
+message GetFlightResponse {
+  Flight flight = 1;
+}
+message SearchFlightsRequest {
+  string query = 1;
+}
+message SearchFlightsResponse {
+  repeated Flight flights = 1;
+}
+
+message AddFlightRequest {
+  string airline = 1;
+  string origin = 2;
+  string destination = 3;
+}
+message AddFlightResponse {
+  Flight flight = 1;
+}
+
+// Définition du service de réservation de vols
+service FlightService {
+  rpc GetFlight(GetFlightRequest) returns (GetFlightResponse);
+  rpc SearchFlights(SearchFlightsRequest) returns (SearchFlightsResponse);
+  rpc AddFlight(AddFlightRequest) returns (AddFlightResponse);
+  // Ajouter d'autres méthodes au besoin
+}
